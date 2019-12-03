@@ -48,5 +48,6 @@
     $sql = "INSERT INTO users(username, password, bank_account_number) VALUES('$username','$password','$bankNumber')";
     if(!empty($username) && !empty($password) && !empty($bankNumber)){
     $conn->query($sql);
+    header('Location'.'index.php');
     }
 ?>
