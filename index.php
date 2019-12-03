@@ -14,7 +14,7 @@
           <img src="logobiale.png" alt="logo"></img>
         </header>
         <h1>Sign in to your bank account</h1>
-        <form action="login.php" method="POST">
+        <form class="container" action="login.php" method="POST">
           <div class="form-group">
             <label for="Username">Username</label>
             <input type="text" class="form-control" name="username" id="username" placeholder="Enter username"></input>
