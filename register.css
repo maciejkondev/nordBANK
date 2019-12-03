@@ -1,0 +1,31 @@
+header{
+    background-color:rgb(78, 189, 233);
+    height: 190px;
+  }
+  body{
+    background-image: url(background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 0 auto;
+  }
+  img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 220px;
+    height: 220px;
+  }
+  label{
+    font-size: 30px;
+  }
+  input{
+    text-align: center;
+    font-size: 20px;
+  }
+  form{
+    margin-top: 5%;
+    text-align: center;
+  }
+  #registerButton{
+      margin-top: 2%;
+  }
