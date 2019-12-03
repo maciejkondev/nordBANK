@@ -19,6 +19,7 @@ body{
     width: 300px;
     padding: 14px;
     background-color: #d1e7f4;
+    float: left;
 }
 #copyButton{
     margin-left: auto;
@@ -33,4 +34,24 @@ body{
     position: absolute;
     top: 0;
     right: 0;
+}
+.chatContainer{
+    float: right;
+    display: block;
+    width: 300px;
+    height: 100px;
+}
+.chat{
+    overflow: auto;
+    width: 300px;
+    height: 100px;
+    border: 2px solid skyblue;
+}
+form > input{
+    margin-top: 1%;
+}
+#submitChat{
+    height: 30%;
+    width: 40%;
+    padding-top: 0;
 }
