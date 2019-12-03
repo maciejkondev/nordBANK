@@ -9,6 +9,9 @@ img{
     width: 220px;
     height: 220px;
 }
+body{
+    margin: 0 auto;
+}
 .options{
     border-radius: 5px;
     margin-top: 0.4%;

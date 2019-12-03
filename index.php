@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="index.css">
         <title>NordBANK</title>
       </head>
-      <body>
+      <body class="bg-light">
         <header>
           <img src="logobiale.png" alt="logo"></img>
         </header>
