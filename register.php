@@ -19,7 +19,7 @@
           </div>
           <div class="form-group">
             <label for="bankNumber">Generate your bank account number</label>
-            <input type="number" required readonly maxlength="26" onclick="generate()" class="form-control" name="bankNumber" id="bankNumber" placeholder="Click on me to generate your bank number">
+            <input type="number" required readonly="readonly" maxlength="26" onclick="generate()" class="form-control" name="bankNumber" id="bankNumber" placeholder="Click on me to generate your bank number">
           <button id="registerButton" type="submit" class="btn btn-success btn-primary">Register</button>
         </form>
     </body>

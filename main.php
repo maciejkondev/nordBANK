@@ -20,7 +20,7 @@
         $username = $_SESSION['username'];
         $hourMin = date('H:i');
         $message = $_POST['message'];
-        $messagesql = "INSERT INTO livechat(username, message, time) VALUES ('$username', '$message','$hourMin')";
+        $messagesql = "INSERT INTO livechat(username, message, time) AmS ('$username', '$message','$hourMin')";
         $conn->query($messagesql);
         header('Location: https://nordbank.herokuapp.com/main.php');
     }
@@ -33,7 +33,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="stylesheet" type="text/css" href="main2.css">
     </head>
     <body class="bg-light">
         <div>
@@ -51,6 +51,20 @@
                     echo "<h6 style='text-align: center' id='banknumber'>" . $row['bank_account_number'] . "</h6>";
                 ?>
                 <button id="copyButton">Copy</button>
+            </div>
+            <div class="banktransfer bg-primary">
+                <h2>Transfer<br>to</h2>
+                <form method="POST" action="transfer.php">
+                    <div class="form-group">
+                        <label for="bankNumber">Bank account number</label>
+                        <input style="text-align: center" type="text" class="form-control" required id="bankNumber" name="bankNumber" placeholder="Type here 26 digits">
+                    </div>
+                    <div class="form-group">
+                        <label for="Amount">Amount</label>
+                        <input style="text-align: center" type="number" class="form-control" required id="Amount" name="Amount" placeholder="Amount of $">
+                    </div>
+                    <button type="submit" class="btn bg-warning">Send</button>
+                </form>
             </div>
             <div class="chatContainer">
                 <h4 style="text-align: center">Live chat</h4>

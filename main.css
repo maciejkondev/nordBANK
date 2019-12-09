@@ -95,4 +95,8 @@ form > input{
     #refreshChat{
         width: 19%;
     }
+    .transfer{
+        width: 100%;
+        height: 100px;
+    }
   }

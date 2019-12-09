@@ -19,7 +19,7 @@ body{
     width: 300px;
     padding: 14px;
     background-color: #d1e7f4;
-    float: left;
+
 }
 #copyButton{
     margin-left: auto;
@@ -72,4 +72,52 @@ form > input{
 .button-container button {
     display: inline;
     vertical-align: middle;
+}
+@media screen and (max-width: 480px ) {
+    .options {
+      width: 100%;
+    }
+    #wback{
+        display: none;
+    }
+    .chat{
+
+        width: 100%;
+    }
+    .chatContainer{
+        width: 100%;
+        margin-top: 10%;
+    }
+    form > input{
+        width: 60%;
+    }
+    #submitChat{
+        width: 18%;
+    }
+    #refreshChat{
+        width: 19%;
+    }
+    .banktransfer{
+        width: 100%;
+        height: 300px;
+        text-align: center;
+    }
+    .banktransfer > form > input{
+        width: 50%;
+        height: 25px;
+        font-size: 13px;
+        text-align: center;
+    }
+  }
+@media screen and (min-width: 1360px){
+    .options{
+        float: left;
+    }
+    .banktransfer{
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    
 }
