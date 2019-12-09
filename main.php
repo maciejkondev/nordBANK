@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-        echo "<p style='position: absolute; bottom: 0;'>Welcome back to your account, " . $_SESSION['username'] . "!</p>";
+        echo "<p id='wback' style='position: absolute; bottom: 0;'>Welcome back to your account, " . $_SESSION['username'] . "!</p>";
     } else {
         header('Location: '.'index.php');
     }
@@ -31,8 +31,9 @@
 ?>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="main2.css">
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head>
     <body class="bg-light">
         <div>
@@ -107,7 +108,7 @@
 
         selection.removeAllRanges();
 
-        range.selectNodeContents(content);
+        range.selectNodeContents(content);  
         selection.addRange(range);
 
         document.execCommand('copy');
