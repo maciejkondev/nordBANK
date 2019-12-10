@@ -1,4 +1,5 @@
 <?php
+    
     session_start();
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         echo "<p id='wback' style='position: absolute; bottom: 0;'>Welcome back to your account, " . $_SESSION['username'] . "!</p>";
@@ -15,27 +16,29 @@
     $sql = "SELECT * from users where username='$username'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
+
     function sendMessage(){
+        date_default_timezone_set('Europe/Warsaw');
         $conn = new mysqli("johnny.heliohost.org","maciejko_admin","Maciusmi1","maciejko_bank");
         $username = $_SESSION['username'];
         $hourMin = date('H:i');
         $message = $_POST['message'];
-        $messagesql = "INSERT INTO livechat(username, message, time) AmS ('$username', '$message','$hourMin')";
+        $messagesql = "INSERT INTO livechat(username, message, time) VALUES ('$username', '$message','$hourMin')";
         $conn->query($messagesql);
         header('Location: https://nordbank.herokuapp.com/main.php');
     }
+
     if (isset($_GET['sendMessage'])) {
         sendMessage();
     }
-
 ?>
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="main2.css">
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head>
-    <body class="bg-light">
+    <body>
         <div>
             <form action="logout.php" method="POST">
                 <button id="logout" class="btn btn-primary" type="submit">Logout</button>
@@ -53,23 +56,30 @@
                 <button id="copyButton">Copy</button>
             </div>
             <div class="banktransfer bg-primary">
-                <h2>Transfer<br>to</h2>
-                <form method="POST" action="transfer.php">
+                <h2>Transfer</h2>
+                <form id="transferForm" method="POST" action="numberTransfer.php">
                     <div class="form-group">
-                        <label for="bankNumber">Bank account number</label>
-                        <input style="text-align: center" type="text" class="form-control" required id="bankNumber" name="bankNumber" placeholder="Type here 26 digits">
+                        <label for="changeToNickname">Nickname</label>
+                        <input type="radio" onclick="nicknameForm()" id="changeToNickname" name="changeToNickname" >
+                        <label for="changeToBankNumber">Bank Number</label>
+                        <input type="radio" checked onclick="bankNumberForm()" id="changeToBankNumber" name="changeToBankNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="Receiver">Bank Account Number</label>
+                        <input style="text-align: center" type="text" class="form-control" required id="Receiver" name="Receiver" placeholder="Type here bank account's number">
                     </div>
                     <div class="form-group">
                         <label for="Amount">Amount</label>
                         <input style="text-align: center" type="number" class="form-control" required id="Amount" name="Amount" placeholder="Amount of $">
                     </div>
-                    <button type="submit" class="btn bg-warning">Send</button>
+                    <button type="submit" class="btn btn-warning">Send</button>
                 </form>
             </div>
-            <div class="chatContainer">
+            <div class="chatContainer align-bottom">
                 <h4 style="text-align: center">Live chat</h4>
                 <div id="chat" class="chat bg-info">
                     <?php
+
                         refresh();
 
                         if (isset($_GET['refreshChat'])) {
@@ -111,6 +121,14 @@
     </body>
 </html>
 <script>
+    function nicknameForm(){
+        document.getElementById('transferForm').action ="nickTransfer.php";
+        document.getElementById('changeToBankNumber').checked = false;
+    }   
+    function bankNumberForm(){
+        document.getElementById('transferForm').action ="numberTransfer.php";
+        document.getElementById('changeToNickname').checked = false;
+    }
     var messageBody = document.querySelector('#chat');
     messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
     var button = document.getElementById("copyButton");

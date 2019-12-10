@@ -46,7 +46,7 @@
 
     $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
-    $sql = "INSERT INTO users(username, password, bank_account_number) VALUES('$username','$password','$bankNumber')";
+    $sql = "INSERT INTO users(username, password, bank_account_number,balance) VALUES('$username','$password','$bankNumber','100')";
     if(!empty($username) && !empty($password) && !empty($bankNumber)){
     $conn->query($sql);
     header('Location: https://nordbank.herokuapp.com');
